@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.split {
+  display: flex;
+  flex-direction: row;
+}
+
+.gutter {
+  background-color: #eee;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+  cursor: col-resize;
+  @apply bg-transparent rounded-lg
+}
+
+.gutter.gutter-vertical {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+  cursor: row-resize;
+  @apply bg-transparent rounded-lg
+}
+
+.tab-content {
+  @apply bg-black mt-0 w-full text-white min-h-[calc(100%-40px)]
+}
+
+.left-pane {
+  @apply max-h-full overflow-y-scroll
+}
+
+.tab-head {
+  @apply text-white rounded-t-lg h-full px-6 text-lg
+}
+
+.cool-scrollbar{
+  scrollbar-width: thin;
+}
+
+.cool-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.pane-title {
+  @apply bg-base-bg pb-0 h-full rounded-t-lg rounded-b-none text-white text-lg
+}
+
+.original .diffOverviewRuler,
+.modified .diffOverviewRuler {
+  display: none !important;
+}
