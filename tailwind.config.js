@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        'gradient-1': 'linear-gradient(180deg, rgba(61, 184, 234, 0.40) 0%, rgba(123, 176, 255, 0.40) 0.01%, rgba(60, 128, 197, 0.40) 48.96%, rgba(50, 68, 154, 0.40) 100%)'
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -35,9 +38,5 @@ module.exports = {
         "button-blue": "#0CA6E9",
       }
     },
-  },
-  plugins: [require("tailwindcss-animate"), require("daisyui")],
-  daisyui: {
-    themes: ["night"],
   },
 }

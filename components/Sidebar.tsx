@@ -1,18 +1,18 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import Image from "next/image";
 import logo from "@/images/logo.png";
 import { TbLayoutSidebarRightCollapse } from "react-icons/tb";
 import { useAtom } from "jotai";
-import { sidebarState } from "@/atoms";
+import { sidebarStateAtom } from "@/atoms";
 
 type Props = {
   children: ReactNode;
 };
 
 const Sidebar = ({ children }: Props) => {
-  const [expanded, setExpanded] = useAtom(sidebarState);
+  const [expanded, setExpanded] = useAtom(sidebarStateAtom);
 
   return (
     <aside className="flex flex-shrink-0 h-screen text-white">
@@ -32,15 +32,15 @@ const Sidebar = ({ children }: Props) => {
             />
             <div>
               <p
-                className={`font-semibold overflow-hidden transition-all ${
-                  expanded ? "w-fit" : "w-0"
+                className={`font-semibold overflow-hidden transition-all text-[#0CA6E9] whitespace-nowrap ${
+                  expanded ? "w-48 ml-3" : "w-0"
                 }`}
               >
                 PROGRAMMING LAB
               </p>
               <p
-                className={`font-semibold overflow-hidden transition-all ${
-                  expanded ? "w-fit" : "w-0"
+                className={`font-semibold overflow-hidden transition-all text-[#0CA6E9]  whitespace-nowrap ${
+                  expanded ? "w-48 ml-3" : "w-0"
                 }`}
               >
                 MANAGEMENT SYSTEM

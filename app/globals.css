@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  @apply bg-[#121c33] text-white
+}
+
 .split {
   display: flex;
   flex-direction: row;

@@ -1,5 +1,6 @@
 import { atom } from 'jotai'
 
-const sidebarState = atom(false)
+const sidebarStateAtom = atom(false)
+const currentPageAtom = atom("home")
 
-export { sidebarState }
+export { sidebarStateAtom, currentPageAtom }

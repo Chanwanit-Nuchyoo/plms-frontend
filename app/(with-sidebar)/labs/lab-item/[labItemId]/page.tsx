@@ -8,11 +8,11 @@ import EditorPane from "@/components/EditorPane";
 
 type Props = {};
 
-const ProblemPage = (props: Props) => {
+const LabItemPage = (props: Props) => {
   return (
-    <div className="w-full max-h-screen relative px-4 pt-8">
+    <div className="w-full max-h-screen relative px-4 py-2">
       <div className="flex items-center gap-2 pt-4 pb-6 ">
-        <span className="w-[40px] h-[40px] rounded-lg bg-blue-500 text-white flex justify-center items-center">
+        <span className="w-[45px] h-[45px] rounded-lg bg-blue-500 text-white flex justify-center items-center">
           DS
         </span>
         <div className="text-sm breadcrumbs">
@@ -29,7 +29,7 @@ const ProblemPage = (props: Props) => {
       <Split
         className="split relative w-full h-[90%] rounded-xl"
         sizes={[40, 60]}
-        minSize={0}
+        minSize={400}
         expandToMin={false}
         gutterSize={8}
         gutterAlign="center"
@@ -44,4 +44,4 @@ const ProblemPage = (props: Props) => {
   );
 };
 
-export default ProblemPage;
+export default LabItemPage;

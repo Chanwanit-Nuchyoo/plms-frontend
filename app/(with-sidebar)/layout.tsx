@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import SidebarItem from "@/components/SidebarItem";
 import { HiOutlineChartSquareBar } from "react-icons/hi";
+import Link from "next/link";
 
 const kanit = Kanit({
   weight: "400",
@@ -23,14 +24,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${kanit.className} flex`}>
-        <Sidebar>
-          <SidebarItem
-            icon={<HiOutlineChartSquareBar className="text-3xl h-full" />}
-            text="หน้าหลัก"
-          />
-        </Sidebar>
-        {children}
+      <body className={`${kanit.className} flex relative`}>
+        <div className="hidden md:block md:w-[400px] md:h-[400px] rounded-full bg-gradient-1 absolute md:top-[150px] md:left-[372px] blur-[100px]" />
+        <div className="hidden md:block md:w-[200px] md:h-[200px] rounded-full bg-gradient-1 absolute md:top-[578px] md:left-[1190px] blur-[100px]" />
+        <div className="z-30 flex w-full ">
+          <Sidebar>
+            <Link href={"/"}>
+              <SidebarItem
+                icon={<HiOutlineChartSquareBar className="text-3xl h-full" />}
+                text="หน้าหลัก"
+                value="home"
+              />
+            </Link>
+          </Sidebar>
+          {children}
+        </div>
       </body>
     </html>
   );

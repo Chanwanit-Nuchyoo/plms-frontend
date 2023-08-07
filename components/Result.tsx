@@ -43,7 +43,7 @@ const Result = ({ code }: Props) => {
   };
 
   return (
-    <div className="w-full h-full bg-black flex flex-col">
+    <div className="w-full h-full bg-black flex flex-col rounded-lg overflow-hidden">
       <div className="flex items-center justify-between w-full px-4 py-1 h-[45px] bg-[#1D283A] rounded-t-lg">
         <p className="text-white flex items-center">Result</p>
         <p
