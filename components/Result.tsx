@@ -7,21 +7,27 @@ type Props = {
 };
 
 interface IResult {
-  Match: boolean;
-  Output: string;
-  Expected: string;
+  status: string;
+  message: string;
+  data: {
+    Match: boolean;
+    Output: string;
+    Expected: string;
+  }[];
 }
 
-const Result = ({ code }: Props) => {
+const Result = ({ code = "" }: Props) => {
   const [isCodeExecuting, setIsCodeExecuting] = useState<boolean>(false);
-  const [results, setResults] = useState<IResult[]>();
+  const [results, setResults] = useState<IResult["data"]>();
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async () => {
+    setIsCodeExecuting(true);
     console.log(code);
 
     // Create a new FormData object
     const formData = new FormData();
-    formData.append("python_code", code || "");
+    formData.append("python_code", code);
     formData.append("time_limit", "5000");
 
     // Configure the headers to send form-data
@@ -32,14 +38,20 @@ const Result = ({ code }: Props) => {
     };
 
     // Make the POST request using axios
-    const res = await axios.post<{ results: IResult[] }>(
-      "http://localhost:3300/api/code/RunCodeWithTestCase",
-      formData,
-      config
-    );
-
-    setResults(res.data.results);
-    setIsCodeExecuting(false);
+    try {
+      const res = await axios.post<IResult>(
+        "http://localhost:3300/api/code/RunCodeWithTestCase",
+        formData,
+        config
+      );
+      setResults(res.data.data);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      }
+    } finally {
+      setIsCodeExecuting(false);
+    }
   };
 
   return (
@@ -48,16 +60,14 @@ const Result = ({ code }: Props) => {
         <p className="text-white flex items-center">Result</p>
         <p
           className="text-white text-lg px-4 py-1 cursor-pointer transition-all rounded-lg hover:bg-[#35B1E7] active:scale-95 active:bg-[#0A94CF] bg-button-blue"
-          onClick={() => {
-            setIsCodeExecuting(true);
-            handleSubmit();
-          }}
+          onClick={handleSubmit}
         >
           Submit
         </p>
       </div>
 
       <div className="w-full h-full px-8 py-2 overflow-y-scroll">
+        {error && <div className="text-red-500">{error}</div>}
         {isCodeExecuting ? (
           <div className="text-white">Executing code...</div>
         ) : (
